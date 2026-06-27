@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nalarasa | Crafted By Heart Served With Soul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --brown: #a86b3e;
+  --brown-dark: #7c4f2c;
+  --brown-darker: #3b2415;
+  --cream: #f5f1e8;
+  --white: #ffffff;
+  --text-dark: #4a3522;
+  --header-h: 86px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:var(--cream);
+  color:var(--text-dark);
+  overflow-x:hidden;
+}
+
+h1,h2,h3,.display{
+  font-family:'Fraunces', serif;
+}
+
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+img{display:block;max-width:100%;}
+
+.section{
+  position:relative;
+  scroll-margin-top: var(--header-h);
+}
+
+/*  HEADER  */
+#header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  height:var(--header-h);
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 60px;
+  background-color: rgba(168,107,62,0);
+  transition: box-shadow .3s ease;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-img{
+  height:70px;
+  width:auto;
+  object-fit:contain;
+}
+
+.logo-extra-img{
+  height:40px;
+  width:auto;
+  object-fit:contain;
+}
+
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:32px;height:32px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0;
+}
+.nav-toggle span{
+  display:block;
+  width:100%;
+  height:2px;
+  background:var(--white);
+  border-radius:2px;
+}
+
+nav ul{
+  display:flex;
+  gap:42px;
+}
+.nav-link{
+  position:relative;
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:2px;
+  color:var(--white);
+  text-transform:uppercase;
+  padding-bottom:8px;
+  transition: opacity .25s ease;
+}
+.nav-link:hover{opacity:.75;}
+.nav-link::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:0;
+  width:0;height:2px;
+  background:var(--white);
+  transition: width .35s ease;
+}
+.nav-link.active::after{width:100%;}
+
+/*  HERO / HOME  */
+.hero{
+  height:100vh;
+  min-height:600px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color: var(--brown-darker);
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('background/bg.jpg');
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(160deg, rgba(50,30,17,.85) 0%, rgba(120,75,42,.55) 55%, rgba(168,107,62,.25) 100%);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:var(--white);
+  padding:0 24px;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:25px;
+  letter-spacing:3px;
+  font-weight:600;
+  padding:9px 26px;
+  border-radius:30px;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(2px);
+  margin-bottom:28px;
+}
+.hero-title{
+  font-size:6.5rem;
+  font-weight:700;
+  letter-spacing:4px;
+  line-height:1;
+  margin-bottom:18px;
+}
+.hero-subtitle{
+  font-family:'Fraunces',serif;
+  font-size:1.4rem;
+  font-weight:500;
+  letter-spacing:1px;
+  margin-bottom:42px;
+}
+.btn-learnmore{
+  display:inline-block;
+  background:var(--white);
+  color:var(--text-dark);
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:2px;
+  padding:17px 42px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.btn-learnmore:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 24px rgba(0,0,0,.25);
+}
+
+/*  ABOUT  */
+.about{
+  min-height:100vh;
+  background:var(--cream);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:var(--header-h) 80px;
+  gap:80px;
+}
+.about-text{
+  flex:1;
+  max-width:560px;
+}
+.about-eyebrow{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.5rem;
+  color:var(--text-dark);
+  margin-bottom:18px;
+}
+.about-highlight{
+  font-style:normal;
+  font-weight:700;
+  font-size:2.1rem;
+  text-decoration:underline;
+  text-decoration-color:var(--brown);
+  text-underline-offset:6px;
+}
+.about-desc{
+  font-size:1.05rem;
+  line-height:1.85;
+  color:var(--text-dark);
+  margin-bottom:46px;
+}
+.about-desc b{
+  font-family:'Fraunces',serif;
+  font-size:1.2rem;
+  color:var(--brown-dark);
+}
+.about-divider{
+  position:relative;
+  width:430px;
+  height:60px;
+}
+.about-divider::before{
+  content:'';
+  position:absolute;
+  left:0;top:50%;
+  width:100%;height:1.5px;
+  background:var(--brown);
+}
+.about-divider::after{
+  content:'';
+  position:absolute;
+  left:75%;top:0;
+  width:1.5px;height:100%;
+  background:var(--brown);
+}
+.about-image{
+  flex:1;
+  max-width:480px;
+  aspect-ratio:4/3;
+  border-radius:6px;
+  background-color: var(--brown);
+  background-image:url('menu/page2.jpeg');
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 30px 60px -20px rgba(59,36,21,.35);
+}
+
+/*  MENU  */
+.menu{
+  min-height:100vh;
+  padding:var(--header-h) 80px;
+  background: linear-gradient(180deg, var(--cream) 0%, #cfa478 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.section-title{
+  font-size:2.4rem;
+  font-weight:400;
+  letter-spacing:1px;
+  color:var(--text-dark);
+  margin-bottom:64px;
+}
+.section-title span{
+  font-weight:700;
+  color:var(--brown-dark);
+}
+.menu-grid{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+}
+.menu-card{
+  display:flex;
+  flex-direction:column;
+  cursor:pointer;
+}
+.menu-img-wrap{
+  width:100%;
+  height:380px;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 18px 40px -16px rgba(59,36,21,.4);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.menu-card:hover .menu-img-wrap{
+  transform:translateY(-10px);
+  box-shadow:0 26px 44px -16px rgba(59,36,21,.5);
+}
+.menu-img{
+  width:100%;
+  height:100%;
+  background-color:var(--brown-darker);
+  background-image: linear-gradient(135deg, var(--brown-darker), var(--brown));
+  background-size:cover;
+  background-position:center;
+}
+.menu-caption{
+  margin-top:18px;
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  color:var(--text-dark);
+}
+
+/*  CONTACT  */
+.contact{
+  min-height:100vh;
+  background:linear-gradient(180deg, #cfa478 0%, var(--cream) 100%);
+  padding:var(--header-h) 80px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.contact-grid{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  grid-template-areas:
+    "lokasi center instagram"
+    "kontak center gojek";
+  gap:28px;
+  align-items:center;
+}
+.contact-card{
+  width:100%;
+  background:var(--brown);
+  border-radius:10px;
+  padding:38px 24px;
+  text-align:center;
+  color:var(--white);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  transition: transform .35s ease, box-shadow .35s ease;
+  box-shadow:0 10px 24px -10px rgba(59,36,21,.25);
+}
+.contact-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 26px 40px -16px rgba(59,36,21,.4);
+}
+.contact-icon{
+  width:42px;height:42px;
+  border:1.5px solid var(--white);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.contact-icon svg{width:20px;height:20px;}
+.contact-card h3{
+  font-family:'Poppins',sans-serif;
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+}
+.contact-card p{
+  font-size:.78rem;
+  opacity:.9;
+  line-height:1.5;
+}
+#card-lokasi{grid-area:lokasi;}
+#card-instagram{grid-area:instagram;}
+#card-kontak{grid-area:kontak;}
+#card-gojek{grid-area:gojek;}
+
+.contact-center{
+  grid-area:center;
+  text-align:center;
+}
+.contact-center h2{
+  font-size:2.6rem;
+  font-weight:600;
+  line-height:1.15;
+  color:var(--text-dark);
+}
+.contact-center h2 span{color:var(--brown-dark);}
+.contact-center-line{
+  width:90px;height:2px;
+  background:var(--brown);
+  margin:18px auto 0;
+}
+
+/*  FOOTER  */
+footer{
+  background:var(--brown);
+  color:var(--white);
+  padding:46px 60px 26px;
+}
+.footer-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-bottom:26px;
+}
+.footer-logo-img{
+  height:68px;
+  width:auto;
+  object-fit:contain;
+}
+.footer-side-img{
+  height:68px;
+  width:auto;
+  object-fit:contain;
+}
+.footer-divider{
+  height:1px;
+  background:rgba(255,255,255,.35);
+  margin-bottom:22px;
+}
+.footer-copyright{
+  text-align:center;
+  font-size:.72rem;
+  letter-spacing:2px;
+  font-weight:600;
+  opacity:.9;
+}
+
+/*  SCROLL REVEAL ANIMATIONS  */
+.reveal{
+  opacity:0;
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal-left{ transform: translateX(-60px); }
+.reveal-right{ transform: translateX(60px); }
+.reveal-up{ transform: translateY(50px); }
+.reveal.in-view{
+  opacity:1;
+  transform: translate(0,0);
+}
+
+/*  RESPONSIVE  */
+@media (max-width: 980px){
+  .about{flex-direction:column;padding:calc(var(--header-h) + 24px) 32px 40px;gap:48px;justify-content:center;}
+  .about-divider{width:100%;}
+  .menu-grid{grid-template-columns:1fr;max-width:420px;}
+  .menu-img-wrap{height:340px;}
+  .contact-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "center"
+      "lokasi"
+      "kontak"
+      "instagram"
+      "gojek";
+  }
+  .contact{padding:calc(var(--header-h) + 24px) 24px 40px;}
+  .menu,.contact{padding-left:24px;padding-right:24px;}
+}
+@media (max-width: 760px){
+  #header{padding:0 20px;}
+  .nav-toggle{display:flex;}
+  nav ul{
+    display:none;
+    position:fixed;
+    top:var(--header-h);
+    left:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    background:var(--brown);
+    padding:6px 0 16px;
+    box-shadow:0 12px 24px rgba(0,0,0,.2);
+  }
+  nav ul.open{display:flex;}
+  nav ul li{width:100%;}
+  .nav-link{
+    display:block;
+    text-align:center;
+    padding:14px 0;
+  }
+  .logo-img{height:36px;}
+  .logo-extra-img{height:30px;}
+  .hero-title{font-size:3.2rem;letter-spacing:2px;}
+  .hero-subtitle{font-size:1rem;}
+  .about-highlight{font-size:1.6rem;}
+  .footer-top{flex-direction:column;gap:14px;}
+  .footer-logo-img{height:50px;}
+  .footer-side-img{height:50px;}
+  .menu-img-wrap{height:280px;}
+}
+</style>
+</head>
+<body>
+
+<!--  HEADER  -->
+<header id="header">
+  <div class="logo">
+    <img class="logo-img" src="logo/logo1.png" alt="Nalarasa - Crafted By Heart Served With Soul">
+    <img class="logo-extra-img" src="logo/logo2.png" alt="Nalarasa">
+  </div>
+  <nav>
+    <button id="navToggle" class="nav-toggle" aria-label="Buka menu navigasi">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="navList">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#menu" class="nav-link">Menu</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!--  HOME  -->
+<section id="home" class="section hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Welcome To</span>
+    <h1 class="hero-title">NALARASA</h1>
+    <p class="hero-subtitle">Crafted By Heart Served With Soul</p>
+    <a href="#about" class="btn-learnmore">Learn More</a>
+  </div>
+</section>
+
+<!--  ABOUT  -->
+<section id="about" class="section about">
+  <div class="about-text reveal reveal-left">
+    <p class="about-eyebrow">It's Not Just A <span class="about-highlight">DRINK</span></p>
+    <p class="about-desc"><b>NALARASA</b> Menghadirkan Minuman Segar Dengan Membawa Kebahagiaan Dalam Setiap Gelasnya.</p>
+    <div class="about-divider"></div>
+  </div>
+  <div class="about-image reveal reveal-right"></div>
+</section>
+
+<!--  MENU  -->
+<section id="menu" class="section menu">
+  <h2 class="section-title reveal reveal-up">Our <span>Menu</span></h2>
+  <div class="menu-grid">
+    <div class="menu-card reveal reveal-up" style="transition-delay:.05s">
+      <div class="menu-img-wrap">
+        <div class="menu-img" style="background-image:url('menu/coklat.jpeg')"></div><!-- menu 1 -->
+      </div>
+      <p class="menu-caption">menu 1</p>
+    </div>
+    <div class="menu-card reveal reveal-up" style="transition-delay:.15s">
+      <div class="menu-img-wrap">
+        <div class="menu-img" style="background-image:url('menu/matcha.jpeg')"></div><!-- menu 2 -->
+      </div>
+      <p class="menu-caption">menu 2</p>
+    </div>
+    <div class="menu-card reveal reveal-up" style="transition-delay:.25s">
+      <div class="menu-img-wrap">
+        <div class="menu-img" style="background-image:url('menu/strawberry.jpeg')"></div><!-- menu 3 -->
+      </div>
+      <p class="menu-caption">menu 3</p>
+    </div>
+  </div>
+</section>
+
+<!--  CONTACT  -->
+<section id="contact" class="section contact">
+  <div class="contact-grid">
+
+    <div id="card-lokasi" class="contact-card-wrap reveal reveal-up">
+      <a class="contact-card" href="https://maps.google.com" target="_blank" rel="noopener"><!-- Google Maps -->
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 21s-7-7.2-7-12a7 7 0 1 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.4"/></svg></div>
+        <h3>Lokasi</h3>
+        <p>Isi alamat toko di sini</p>
+      </a>
+    </div>
+
+    <div class="contact-center reveal reveal-up">
+      <h2>Get Yours<br><span>Now!</span></h2>
+      <div class="contact-center-line"></div>
+    </div>
+
+    <div id="card-instagram" class="contact-card-wrap reveal reveal-up" style="transition-delay:.1s">
+      <a class="contact-card" href="https://instagram.com/" target="_blank" rel="noopener"><!-- link Instagram -->
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></div>
+        <h3>Instagram</h3>
+        <p>@isi_username_ig</p>
+      </a>
+    </div>
+
+    <div id="card-kontak" class="contact-card-wrap reveal reveal-up" style="transition-delay:.15s">
+      <a class="contact-card" href="https://wa.me/62xxxxxxxxxx" target="_blank" rel="noopener"><!-- nomor WhatsApp -->
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M4 4h16v12H7l-3 3V4z"/></svg></div>
+        <h3>Contact</h3>
+        <p>Isi nomor telepon di sini</p>
+      </a>
+    </div>
+
+    <div id="card-gojek" class="contact-card-wrap reveal reveal-up" style="transition-delay:.2s">
+      <a class="contact-card" href="https://gofood.co.id/" target="_blank" rel="noopener"><!-- Gojek link -->
+        <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M3 16V7h11v9"/><path d="M14 11h4l3 3v2h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg></div>
+        <h3>Gojek</h3>
+        <p>Pesan via GoFood</p>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!--  FOOTER  -->
+<footer id="footer">
+  <div class="footer-top">
+    <img class="footer-logo-img" src="logo/logo1.png" alt="Nalarasa - Crafted By Heart Served With Soul">
+    <img class="footer-side-img" src="logo/logo2.png" alt="Nalarasa">
+  </div>
+  <div class="footer-divider"></div>
+  <p class="footer-copyright">© 2026 NALARASA. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<script>
+// ---------- 1. Header: transparan di Home, muncul background saat scroll ----------
+const header = document.getElementById('header');
+const hero   = document.getElementById('home');
+
+function updateHeader(){
+  const heroHeight = hero.offsetHeight;
+  const fadeDistance = heroHeight * 0.65;
+  const opacity = Math.min(window.scrollY / fadeDistance, 1);
+  header.style.backgroundColor = `rgba(168,107,62, ${opacity})`;
+  header.style.boxShadow = opacity > 0.3 ? `0 6px 24px rgba(0,0,0,${0.18*opacity})` : 'none';
+}
+window.addEventListener('scroll', updateHeader, {passive:true});
+updateHeader();
+
+// ---------- 2. Scrollspy: garis bawah otomatis pindah sesuai halaman aktif ----------
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const id = entry.target.id;
+      navLinks.forEach(link=>{
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold:0.45, rootMargin:`-${86}px 0px -35% 0px` });
+
+sections.forEach(s => observer.observe(s));
+
+// ---------- 3. Animasi fade-in saat elemen masuk/keluar layar ----------
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    entry.target.classList.toggle('in-view', entry.isIntersecting);
+  });
+}, { threshold:0.2 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ---------- 4. Menu hamburger untuk HP ----------
+const navToggle = document.getElementById('navToggle');
+const navList = document.getElementById('navList');
+navToggle.addEventListener('click', () => {
+  navList.classList.toggle('open');
+});
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navList.classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
