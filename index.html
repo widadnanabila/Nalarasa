@@ -17,7 +17,7 @@
   --cream: #f5f1e8;
   --white: #ffffff;
   --text-dark: #4a3522;
-  --header-h: 86px;
+  --header-h: 110px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -49,15 +49,19 @@ img{display:block;max-width:100%;}
 /*  HEADER  */
 #header{
   position:fixed;
-  top:0;left:0;width:100%;
-  height:var(--header-h);
+  top:18px;left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 60px);
+  max-width:1400px;
+  height:74px;
   z-index:1000;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 60px;
+  padding:0 36px;
   background-color: rgba(168,107,62,0);
-  transition: box-shadow .3s ease;
+  border-radius:50px;
+  transition: background-color .3s ease, box-shadow .3s ease;
 }
 
 .logo{
@@ -67,13 +71,13 @@ img{display:block;max-width:100%;}
 }
 
 .logo-img{
-  height:70px;
+  height:54px;
   width:auto;
   object-fit:contain;
 }
 
 .logo-extra-img{
-  height:40px;
+  height:34px;
   width:auto;
   object-fit:contain;
 }
@@ -141,23 +145,21 @@ nav ul{
   inset:0;
   background:linear-gradient(160deg, rgba(50,30,17,.85) 0%, rgba(120,75,42,.55) 55%, rgba(168,107,62,.25) 100%);
 }
+/* Gradasi lembut di bagian bawah hero supaya menyatu (blend) dengan halaman About di bawahnya */
+.hero-fade{
+  position:absolute;
+  left:0;bottom:0;width:100%;
+  height:220px;
+  background:linear-gradient(180deg, rgba(245,241,232,0) 0%, var(--cream) 100%);
+  pointer-events:none;
+  z-index:2;
+}
 .hero-content{
   position:relative;
-  z-index:2;
+  z-index:3;
   text-align:center;
   color:var(--white);
   padding:0 24px;
-}
-.eyebrow{
-  display:inline-block;
-  font-size:25px;
-  letter-spacing:3px;
-  font-weight:600;
-  padding:9px 26px;
-  border-radius:30px;
-  background:rgba(255,255,255,.18);
-  backdrop-filter:blur(2px);
-  margin-bottom:28px;
 }
 .hero-title{
   font-size:6.5rem;
@@ -175,15 +177,19 @@ nav ul{
 }
 .btn-learnmore{
   display:inline-block;
-  background:var(--white);
-  color:var(--text-dark);
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(2px);
+  border:1px solid rgba(255,255,255,.55);
+  color:var(--white);
   font-size:.78rem;
   font-weight:700;
   letter-spacing:2px;
-  padding:17px 42px;
-  transition: transform .3s ease, box-shadow .3s ease;
+  padding:15px 42px;
+  border-radius:30px;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
 }
 .btn-learnmore:hover{
+  background:rgba(255,255,255,.3);
   transform:translateY(-3px);
   box-shadow:0 12px 24px rgba(0,0,0,.25);
 }
@@ -205,27 +211,29 @@ nav ul{
 .about-eyebrow{
   font-family:'Fraunces',serif;
   font-style:italic;
-  font-size:1.5rem;
-  color:var(--text-dark);
-  margin-bottom:18px;
-}
-.about-highlight{
-  font-style:normal;
   font-weight:700;
-  font-size:2.1rem;
-  text-decoration:underline;
-  text-decoration-color:var(--brown);
-  text-underline-offset:6px;
+  font-size:2rem;
+  color:var(--brown-dark);
+  margin-bottom:24px;
 }
 .about-desc{
   font-size:1.05rem;
-  line-height:1.85;
+  line-height:1.9;
   color:var(--text-dark);
   margin-bottom:46px;
 }
 .about-desc b{
   font-family:'Fraunces',serif;
   font-size:1.2rem;
+  color:var(--brown-dark);
+}
+.about-desc p{
+  margin-bottom:16px;
+}
+.about-tagline{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
   color:var(--brown-dark);
 }
 .about-divider{
@@ -468,19 +476,20 @@ footer{
   .menu,.contact{padding-left:24px;padding-right:24px;}
 }
 @media (max-width: 760px){
-  #header{padding:0 20px;}
+  #header{padding:0 18px;width:calc(100% - 32px);height:64px;top:14px;}
   .nav-toggle{display:flex;}
   nav ul{
     display:none;
     position:fixed;
-    top:var(--header-h);
-    left:0;
-    width:100%;
+    top:90px;
+    left:16px;
+    width:calc(100% - 32px);
     flex-direction:column;
     align-items:center;
     gap:0;
     background:var(--brown);
     padding:6px 0 16px;
+    border-radius:18px;
     box-shadow:0 12px 24px rgba(0,0,0,.2);
   }
   nav ul.open{display:flex;}
@@ -490,11 +499,10 @@ footer{
     text-align:center;
     padding:14px 0;
   }
-  .logo-img{height:36px;}
-  .logo-extra-img{height:30px;}
+  .logo-img{height:32px;}
+  .logo-extra-img{height:26px;}
   .hero-title{font-size:3.2rem;letter-spacing:2px;}
   .hero-subtitle{font-size:1rem;}
-  .about-highlight{font-size:1.6rem;}
   .footer-top{flex-direction:column;gap:14px;}
   .footer-logo-img{height:50px;}
   .footer-side-img{height:50px;}
@@ -527,18 +535,22 @@ footer{
 <section id="home" class="section hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <span class="eyebrow">Welcome To</span>
     <h1 class="hero-title">NALARASA</h1>
     <p class="hero-subtitle">Crafted By Heart Served With Soul</p>
-    <a href="#about" class="btn-learnmore">Learn More</a>
+    <a href="#about" class="btn-learnmore">Our Story</a>
   </div>
+  <div class="hero-fade"></div>
 </section>
 
 <!--  ABOUT  -->
 <section id="about" class="section about">
   <div class="about-text reveal reveal-left">
-    <p class="about-eyebrow">It's Not Just A <span class="about-highlight">DRINK</span></p>
-    <p class="about-desc"><b>NALARASA</b> Menghadirkan Minuman Segar Dengan Membawa Kebahagiaan Dalam Setiap Gelasnya.</p>
+    <p class="about-eyebrow">Tentang Nalarasa</p>
+    <div class="about-desc">
+      <p>NALARASA adalah perpaduan <b>Nala</b>, yang berarti nurani, dan <b>Rasa</b>, yang berarti cita rasa.</p>
+      <p>Bagi kami, setiap sajian adalah perwujudan dari "rasa dari hati". Sebuah perpaduan antara ketelitian meramu, pemilihan bahan terbaik, dan ketulusan dalam setiap prosesnya.</p>
+      <p class="about-tagline">Crafted by Heart. Served with Soul.</p>
+    </div>
     <div class="about-divider"></div>
   </div>
   <div class="about-image reveal reveal-right"></div>
@@ -633,7 +645,7 @@ function updateHeader(){
   const fadeDistance = heroHeight * 0.65;
   const opacity = Math.min(window.scrollY / fadeDistance, 1);
   header.style.backgroundColor = `rgba(168,107,62, ${opacity})`;
-  header.style.boxShadow = opacity > 0.3 ? `0 6px 24px rgba(0,0,0,${0.18*opacity})` : 'none';
+  header.style.boxShadow = opacity > 0.3 ? `0 10px 30px rgba(59,36,21,${0.25*opacity})` : 'none';
 }
 window.addEventListener('scroll', updateHeader, {passive:true});
 updateHeader();
