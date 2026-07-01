@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Paksa browser tidak override warna apapun (light/dark mode) -->
+<meta name="color-scheme" content="only light">
 <title>Nalarasa | Crafted By Heart Served With Soul</title>
 <link rel="icon" type="image/png" href="logo/logo1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +26,9 @@
 
 html{
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  /* Paksa warna sistem tidak ikut campur */
+  color-scheme: only light;
 }
 
 body{
@@ -31,6 +36,8 @@ body{
   background:var(--cream);
   color:var(--text-dark);
   overflow-x:hidden;
+  /* Paksa background cream tidak teroverride oleh sistem HP */
+  background-color: #f5f1e8 !important;
 }
 
 h1,h2,h3,.display{
@@ -208,6 +215,7 @@ nav ul{
   justify-content:center;
   padding:var(--header-h) 80px;
   gap:80px;
+  overflow:hidden;
 }
 .about-text{
   flex:1;
@@ -576,19 +584,19 @@ footer{
       <div class="menu-img-wrap">
         <img src="menu/menu1.jpeg" alt="Butterscotch Sea Salt Latte"><!-- menu 1 -->
       </div>
-      <p class="menu-caption">Matcha Latte</p>
+      <p class="menu-caption">Butterscotch Sea Salt Latte</p>
     </div>
     <div class="menu-card reveal reveal-up" style="transition-delay:.15s">
       <div class="menu-img-wrap">
         <img src="menu/menu2.jpeg" alt="Matcha Latte"><!-- menu 2 -->
       </div>
-      <p class="menu-caption">Korean Strawberry Milk</p>
+      <p class="menu-caption">Matcha Latte</p>
     </div>
     <div class="menu-card reveal reveal-up" style="transition-delay:.25s">
       <div class="menu-img-wrap">
         <img src="menu/menu3.jpeg" alt="Korean Strawberry Milk"><!-- menu 3 -->
       </div>
-      <p class="menu-caption">Butterscotch Sea Salt Latte</p>
+      <p class="menu-caption">Korean Strawberry Milk</p>
     </div>
   </div>
 </section>
