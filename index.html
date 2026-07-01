@@ -145,12 +145,17 @@ nav ul{
   inset:0;
   background:linear-gradient(160deg, rgba(50,30,17,.85) 0%, rgba(120,75,42,.55) 55%, rgba(168,107,62,.25) 100%);
 }
-/* Gradasi lembut di bagian bawah hero supaya menyatu (blend) dengan halaman About di bawahnya */
+/* Gradasi lembut di bagian bawah hero supaya menyatu (blend) dengan halaman About di bawahnya.
+   Dibuat lebih rendah & lebih bertahap supaya tidak terlalu naik ke atas dan tidak terlalu terang tiba-tiba. */
 .hero-fade{
   position:absolute;
   left:0;bottom:0;width:100%;
-  height:220px;
-  background:linear-gradient(180deg, rgba(245,241,232,0) 0%, var(--cream) 100%);
+  height:140px;
+  background:linear-gradient(180deg,
+    rgba(245,241,232,0) 0%,
+    rgba(245,241,232,0) 35%,
+    rgba(245,241,232,.55) 70%,
+    var(--cream) 100%);
   pointer-events:none;
   z-index:2;
 }
@@ -255,34 +260,36 @@ nav ul{
   width:1.5px;height:100%;
   background:var(--brown);
 }
+/* Foto About: ditampilkan UTUH sesuai proporsi aslinya (tidak dipotong/cropped).
+   Lebar dibatasi max-width, tinggi menyesuaikan otomatis dari rasio foto aslinya,
+   dengan batas tinggi maksimum supaya tidak terlalu panjang di layar. */
 .about-image{
   flex:1;
   max-width:480px;
-  aspect-ratio:4/3;
+}
+.about-image img{
+  width:100%;
+  height:auto;
+  max-height:75vh;
+  object-fit:contain;
   border-radius:6px;
-  background-color: var(--brown);
-  background-image:url('menu/halaman2.jpeg');
-  background-size:cover;
-  background-position:center;
   box-shadow:0 30px 60px -20px rgba(59,36,21,.35);
 }
 
-/*  MENU  */
 .menu{
   min-height:100vh;
-  padding:var(--header-h) 80px;
+  padding:calc(var(--header-h) + 10px) 80px 60px;
   background: linear-gradient(180deg, var(--cream) 0%, #cfa478 100%);
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
 }
 .section-title{
   font-size:2.4rem;
   font-weight:400;
   letter-spacing:1px;
   color:var(--text-dark);
-  margin-bottom:64px;
+  margin-bottom:40px;
 }
 .section-title span{
   font-weight:700;
@@ -290,19 +297,20 @@ nav ul{
 }
 .menu-grid{
   width:100%;
-  max-width:1100px;
+  max-width:900px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:36px;
+  gap:28px;
+  align-items:start;
 }
 .menu-card{
   display:flex;
   flex-direction:column;
   cursor:pointer;
 }
+/* Foto menu: ditampilkan UTUH sesuai proporsi aslinya (tidak dipotong/cropped). */
 .menu-img-wrap{
   width:100%;
-  height:380px;
   border-radius:6px;
   overflow:hidden;
   box-shadow:0 18px 40px -16px rgba(59,36,21,.4);
@@ -312,19 +320,19 @@ nav ul{
   transform:translateY(-10px);
   box-shadow:0 26px 44px -16px rgba(59,36,21,.5);
 }
-.menu-img{
+.menu-img-wrap img{
   width:100%;
-  height:100%;
-  background-color:var(--brown-darker);
-  background-image: linear-gradient(135deg, var(--brown-darker), var(--brown));
-  background-size:cover;
-  background-position:center;
+  height:auto;
+  max-height:340px;
+  object-fit:contain;
+  display:block;
+  background:var(--brown-darker);
 }
 .menu-caption{
-  margin-top:18px;
+  margin-top:14px;
   text-align:center;
   font-family:'Fraunces',serif;
-  font-size:1.15rem;
+  font-size:1.05rem;
   font-weight:600;
   letter-spacing:.5px;
   color:var(--text-dark);
@@ -459,10 +467,11 @@ footer{
 
 /*  RESPONSIVE  */
 @media (max-width: 980px){
-  .about{flex-direction:column;padding:calc(var(--header-h) + 24px) 32px 40px;gap:48px;justify-content:center;}
+  .about{flex-direction:column;align-items:center;padding:calc(var(--header-h) + 24px) 32px 40px;gap:40px;}
+  .about-text{padding-top:0;}
   .about-divider{width:100%;}
   .menu-grid{grid-template-columns:1fr;max-width:420px;}
-  .menu-img-wrap{height:340px;}
+  .menu-img-wrap img{max-height:420px;}
   .contact-grid{
     grid-template-columns:1fr;
     grid-template-areas:
@@ -506,7 +515,7 @@ footer{
   .footer-top{flex-direction:column;gap:14px;}
   .footer-logo-img{height:50px;}
   .footer-side-img{height:50px;}
-  .menu-img-wrap{height:280px;}
+  .menu-img-wrap img{max-height:340px;}
 }
 </style>
 </head>
@@ -553,7 +562,10 @@ footer{
     </div>
     <div class="about-divider"></div>
   </div>
-  <div class="about-image reveal reveal-right"></div>
+  <div class="about-image reveal reveal-right">
+    <!-- GANTI FOTO ABOUT: foto akan tampil utuh sesuai rasio aslinya, tidak dipotong -->
+    <img src="menu/halaman2.jpeg" alt="Nalarasa About">
+  </div>
 </section>
 
 <!--  MENU  -->
@@ -562,21 +574,21 @@ footer{
   <div class="menu-grid">
     <div class="menu-card reveal reveal-up" style="transition-delay:.05s">
       <div class="menu-img-wrap">
-        <div class="menu-img" style="background-image:url('menu/menu1.jpeg')"></div><!-- menu 1 -->
-      </div>
-      <p class="menu-caption">Butterscotch Sea Salt Latte</p>
-    </div>
-    <div class="menu-card reveal reveal-up" style="transition-delay:.15s">
-      <div class="menu-img-wrap">
-        <div class="menu-img" style="background-image:url('menu/menu2.jpeg')"></div><!-- menu 2 -->
+        <img src="menu/menu1.jpeg" alt="Butterscotch Sea Salt Latte"><!-- menu 1 -->
       </div>
       <p class="menu-caption">Matcha Latte</p>
     </div>
-    <div class="menu-card reveal reveal-up" style="transition-delay:.25s">
+    <div class="menu-card reveal reveal-up" style="transition-delay:.15s">
       <div class="menu-img-wrap">
-        <div class="menu-img" style="background-image:url('menu/menu3.jpeg')"></div><!-- menu 3 -->
+        <img src="menu/menu2.jpeg" alt="Matcha Latte"><!-- menu 2 -->
       </div>
       <p class="menu-caption">Korean Strawberry Milk</p>
+    </div>
+    <div class="menu-card reveal reveal-up" style="transition-delay:.25s">
+      <div class="menu-img-wrap">
+        <img src="menu/menu3.jpeg" alt="Korean Strawberry Milk"><!-- menu 3 -->
+      </div>
+      <p class="menu-caption">Butterscotch Sea Salt Latte</p>
     </div>
   </div>
 </section>
